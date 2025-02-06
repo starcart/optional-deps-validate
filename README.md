@@ -4,6 +4,8 @@
 
 > **Validate that all optional dependencies declared by installed packages are present in `package-lock.json`.**
 
+This is a workaround for [this npm issue](https://github.com/npm/cli/issues/4828).
+
 When using Node.js and npm, certain packages declare OS- or architecture-specific sub-dependencies in their `optionalDependencies`. However, sometimes `npm` can generate a partial `package-lock.json` that excludes some or all of those optional deps. This can lead to problems on other machines or CI when `npm` fails to install required platform packages.
 
 **`optional-deps-validate`** is a CLI tool that scans your local `node_modules` and compares each installed package's `optionalDependencies` against your `package-lock.json`. If any are missing, it warns you and exits with a non-zero status code.
